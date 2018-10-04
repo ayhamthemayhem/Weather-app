@@ -31,7 +31,7 @@ class Store {
 
   @action
   async getWeatherData() {
-    const url = `http://api.openweathermap.org/data/2.5/forecast?q=${this.cityName}&units=metric&appid=${
+    const url = `https://api.openweathermap.org/data/2.5/forecast?q=${this.cityName}&units=metric&appid=${
       process.env.REACT_APP_API_KEY
     }`;
     try {
