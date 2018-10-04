@@ -1,0 +1,182 @@
+{
+  "env": {
+    "browser": true,
+    "jest": true
+  },
+  "extends": [
+    "airbnb",
+    "plugin:promise/recommended"
+  ],
+  "parser": "babel-eslint",
+  "plugins": [
+    "jsx-a11y",
+    "promise",
+    "import",
+    "react"
+  ],
+  "rules": {
+    "class-methods-use-this": [
+      1,
+      {
+        "exceptMethods": [
+          "getChildContext",
+          "componentWillMount"
+        ]
+      }
+    ],
+    "comma-dangle": [
+      "error",
+      "always-multiline"
+    ],
+    "import/exports-last": 2,
+    "import/no-duplicates": "off",
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": true,
+        "optionalDependencies": true,
+        "peerDependencies": true
+      }
+    ],
+    "import/no-named-as-default": 2,
+    "import/no-webpack-loader-syntax": "off",
+    "import/prefer-default-export": "off",
+    "jsx-a11y/anchor-has-content": "off",
+    "jsx-a11y/anchor-is-valid": [2,
+      {
+        "components": [ "Link" ],
+        "specialLink": [ "to" ]
+      }
+    ],
+    "jsx-a11y/href-no-hash": "off",
+    "max-len": [
+      2,
+      120,
+      2,
+      {
+        "ignoreComments": false,
+        "ignoreUrls": true
+      }
+    ],
+    "no-underscore-dangle": "off",
+    "object-curly-newline": [
+      "error",
+      {
+        "ObjectExpression": {
+          "consistent": true,
+          "minProperties": 5,
+          "multiline": true
+        },
+        "ObjectPattern": {
+          "consistent": true,
+          "minProperties": 5,
+          "multiline": true
+        }
+      }
+    ],
+    "promise/prefer-await-to-then": 1,
+    "react/boolean-prop-naming": [
+      2,
+      {
+        "message": "Boolean prop '{{ propName }}' should start with 'is', 'has' or 'should'",
+        "rule": "^(is|has|should)[A-Z]([A-Za-z0-9]?)+"
+      }
+    ],
+    "react/button-has-type": [
+      2,
+      {
+        "button": true,
+        "reset": false,
+        "submit": false
+      }
+    ],
+    "react/sort-comp": [1, {
+      "order": [
+      "instance-variables",
+      "static-methods",
+      "lifecycle",
+      "/^on.+$/",
+      "everything-else",
+      "render"
+    ]
+  }],
+    "react/default-props-match-prop-types": 2,
+    "react/destructuring-assignment": [
+      1,
+      "always"
+    ],
+    "react/forbid-prop-types": "off",
+    "react/jsx-curly-spacing": [
+      2,
+      "never",
+      {
+        "allowMultiline": false,
+        "spacing": {
+          "objectLiterals": "never"
+        }
+      }
+    ],
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [
+          ".js",
+          ".jsx"
+        ]
+      }
+    ],
+    "react/jsx-handler-names": 2,
+    "react/jsx-indent-props": [2, 2],
+    "react/jsx-sort-default-props": 2,
+    "react/jsx-sort-props": [
+      2,
+      {
+        "callbacksLast": true,
+        "ignoreCase": true,
+        "noSortAlphabetically": false,
+        "reservedFirst": [
+          "key",
+          "ref"
+        ],
+        "shorthandFirst": true,
+        "shorthandLast": false
+      }
+    ],
+    "react/jsx-wrap-multilines": [
+      2,
+      {
+        "arrow": "parens-new-line",
+        "assignment": "parens-new-line",
+        "condition": "parens-new-line",
+        "declaration": "parens-new-line",
+        "logical": "parens-new-line",
+        "prop": "parens-new-line",
+        "return": "parens-new-line"
+      }
+    ],
+    "react/no-access-state-in-setstate": 2,
+    "react/no-array-index-key": 1,
+    "react/no-children-prop": 2,
+    "react/no-did-mount-set-state": [
+      2,
+      "disallow-in-func"
+    ],
+    "react/no-did-update-set-state": [
+      2,
+      "disallow-in-func"
+    ],
+    "react/no-direct-mutation-state": 2,
+    "react/no-multi-comp": [
+      2,
+      {
+        "ignoreStateless": true
+      }
+    ],
+    "react/no-string-refs": 2,
+    "react/no-unused-prop-types": "off",
+    "react/require-default-props": 1,
+    "react/require-render-return": 2,
+    "react/sort-prop-types": 2,
+    "react/style-prop-object": 2
+  }
+}

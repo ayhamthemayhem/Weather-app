@@ -1,0 +1,248 @@
+.App {
+  color: white;
+  padding-top: 1%;
+  min-height: 100vh;
+  padding-bottom: 1%;
+  background: linear-gradient(45deg, #002d40 6%, #002d40 15%, #e54661 143%);
+}
+.ct {
+  font-weight: lighter;
+  text-align: center;
+}
+.nav-item {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.active {
+  color: red;
+}
+a {
+  color: white;
+}
+a:hover {
+  color: #e6e6e6;
+  text-decoration: none;
+}
+.Result {
+  margin-top: 2%;
+}
+
+.searchIcon {
+  width: 16px;
+  height: 16px;
+}
+.off {
+  color: grey;
+}
+
+.switcher:focus {
+  outline: none;
+}
+.header h1 {
+  color: white;
+}
+/*-----------------------Navbar Styles-------------------------------------*/
+
+.navbar {
+  background-color: inherit;
+}
+
+#searchBar {
+  height: 40px;
+  color: white;
+  border-radius: 0.25rem;
+  background-color: inherit;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  transition: border 1s ease;
+}
+#searchBar:focus {
+  background-color: inherit;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+#searchBar:hover {
+  background-color: inherit;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.btn {
+  height: 40px;
+  color: white;
+  display: block;
+  background-color: inherit;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  transition: border 1s ease;
+}
+.btn:hover {
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+.unitSwitch {
+  padding-left: 10px;
+  display: flex;
+  flex-direction: row-reverse;
+}
+.searchButton {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.searchContainer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: baseline;
+  flex-wrap: nowrap;
+}
+
+/*---------------------------Main Info Syles----------------------------*/
+
+.MainInfo {
+  padding: 3%;
+  margin-bottom: 15px;
+  border-radius: 0.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.MainInfo .list-group-item {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  text-align: center;
+  color: white;
+  font-size: 1.2em;
+  background-color: inherit;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.MainInfo h1 {
+  color: white;
+  display: block;
+  text-align: center;
+  font-weight: lighter;
+}
+
+.MainInfo h3 {
+  color: white;
+  font-size: 3em;
+  text-align: center;
+}
+.MainInfo h4 {
+  font-weight: lighter;
+  text-align: center;
+}
+.list-group-item span {
+  font-weight: lighter;
+}
+.float-right {
+  float: right;
+}
+
+#bigIcon {
+  width: 256px;
+  height: 256px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/*--------------------Houres Styles-----------------------*/
+
+.hours {
+  margin-bottom: 15px;
+}
+
+.hour h4 {
+  color: white;
+  font-size: 1.7em;
+  text-align: center;
+}
+
+.hour h6 {
+  font-size: 1.1em;
+  color: white;
+  text-align: center;
+  font-weight: lighter;
+}
+.houricon {
+  fill: white;
+  max-width: 88px;
+  display: block;
+  margin-left: auto;
+  margin-bottom: 15px;
+  margin-right: auto;
+}
+
+.hour {
+  margin-bottom: 2%;
+  padding: 5%;
+  border-radius: 0.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+/*--------------------------------Days Styles---------------------------------------*/
+.days {
+  padding: 1%;
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 2%;
+  border-radius: 0.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+.dayName {
+  color: white;
+  text-align: center;
+  font-weight: lighter;
+}
+.dayicon {
+  max-width: 64px;
+  max-height: 64px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/*------------------------------------------------------------------*/
+
+/*-------------------------Transtions-----------------------------------------*/
+
+.example-enter {
+  opacity: 0.01;
+}
+
+.example-enter.example-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.example-leave {
+  opacity: 1;
+}
+
+.example-leave.example-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
+}
+
+/*----------------------About Page Styels --------------------------------------------*/
+.about {
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 2%;
+  border-radius: 0.25rem;
+}
+.about h3 {
+  font-weight: lighter;
+}
+.about p {
+  font-weight: lighter;
+  max-width: 50%;
+  word-wrap: break-word;
+}
+
+.about img {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  border-radius: 0.25rem;
+}
+.socialIcon {
+  bottom: 0px;
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+}
