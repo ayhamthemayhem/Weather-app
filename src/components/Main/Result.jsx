@@ -5,7 +5,7 @@ import Hour from '../Hours/Hour';
 import MainInfo from './MainInfo';
 import Days from '../Days/Days';
 
-const Result = ({ units, weatherData }) => {
+const Result = ({ units, weatherData, weekDays }) => {
   const { list, city } = weatherData;
   if (list === undefined) return <div />;
 
@@ -15,7 +15,7 @@ const Result = ({ units, weatherData }) => {
     <Container>
       <MainInfo key={1} cityName={city.name} units={units} weatherData={list[0]} />
       <Row className="hours">{hours}</Row>
-      <Days units={units} weatherData={weatherData} />
+      <Days units={units} weekDays={weekDays} />
     </Container>
   );
 };

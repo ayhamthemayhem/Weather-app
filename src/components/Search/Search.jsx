@@ -1,13 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Container, Row, Col, Button, Form, Input } from 'reactstrap';
-import { Link } from 'react-router-dom';
 import UnitSwitch from '../UnitSwitcher/UnitSwitcher';
 import searchIcon from '../../media/icons/search.svg';
 
-const Search = ({
-  changeUnit, unitType, onTextInput, cityName, onGetWeatherData,
-}) => (
+const Search = ({ changeUnit, unitType, onTextInput, onGetWeatherData }) => (
   <Container className="mb-5 mt-5">
     <Row className="searchContainer">
       <Col className="unitSwitch" md="3" xs="3">
@@ -23,13 +20,11 @@ const Search = ({
             placeholder="City Name"
             type="text"
           />
-          <Link to={`/${cityName}`}>
-            <Button className="my-2 my-sm-0" type="submit" onClick={onGetWeatherData}>
-              <span>
-                <img alt="search icon" className="searchIcon" src={searchIcon} />
-              </span>
-            </Button>
-          </Link>
+          <Button className="my-2 my-sm-0" type="submit" onClick={onGetWeatherData}>
+            <span>
+              <img alt="search icon" className="searchIcon" src={searchIcon} />
+            </span>
+          </Button>
         </Form>
       </Col>
     </Row>

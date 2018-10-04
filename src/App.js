@@ -25,7 +25,8 @@ class App extends React.Component {
     }
   };
 
-  handleGetWeatherData = () => {
+  handleGetWeatherData = (e) => {
+    e.preventDefault();
     const { store } = this.props;
     store.getWeatherData();
   };
@@ -39,21 +40,19 @@ class App extends React.Component {
   render() {
     const { unitType } = this.state;
     const {
-      store: { cities, cityName },
+      store: { cityData, weekDays },
     } = this.props;
-
+    console.log(weekDays);
     return (
       <Router>
         <Container fluid className="App">
-          {/* <Navi citys={citys} fetchDevInfo={this.fetchDevInfo} /> */}
           <Search
             changeUnit={this.changeUnit}
-            cityName={cityName}
             onGetWeatherData={this.handleGetWeatherData}
             onTextInput={this.handleTextInput}
             unitType={unitType}
           />
-          <Main citys={cities} unitType={unitType} />
+          <Main cityData={cityData} unitType={unitType} weekDays={weekDays} />
         </Container>
       </Router>
     );

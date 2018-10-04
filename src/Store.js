@@ -1,16 +1,32 @@
 import { observable, computed, action } from 'mobx';
+import moment from 'moment';
 import axios from 'axios';
+import uniqBy from 'lodash/uniqBy';
 
 class Store {
   @observable cityName = '';
 
-  @observable _weatherData = null;
+  @observable _cityData = null;
 
   @observable _citiesArray = [];
 
+  @observable unitType = 'metric';
+
   @computed
-  get cities() {
-    return this._citiesArray;
+  get cityData() {
+    return this._cityData;
+  }
+
+  @computed
+  get weekDays() {
+    if (!this.cityData) return null;
+    const allDays = this.cityData.data.list.map(day => ({
+      name: moment(day.dt_txt).format('dddd'),
+      temp: `${Math.round(day.main.temp)}`,
+      icon: day.weather[0].icon,
+    }));
+
+    return uniqBy(allDays, 'name');
   }
 
   @action
@@ -25,8 +41,8 @@ class Store {
         data,
         temp: data.list[0].main.temp,
       };
-      const cities = [...this._citiesArray, city];
-      this._citiesArray = cities;
+
+      this._cityData = city;
 
       return data;
     } catch (e) {
@@ -37,6 +53,15 @@ class Store {
   @action
   setCityName(input) {
     this.cityName = input;
+  }
+
+  @action
+  setUnitType() {
+    if (this.unitType === 'metric') {
+      this.unitType = 'imperial';
+    } else if (this.unitType === 'imperial') {
+      this.unitType = 'metric';
+    }
   }
 }
 
