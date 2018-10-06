@@ -2,34 +2,36 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'reactstrap';
 
-const UnitSwitch = ({ changeUnit, unitType }) => {
-  if (unitType === 'metric') {
-    return (
-      <Button className="switcher" onClick={changeUnit}>
-        <span>C°</span>
-        {' '}
-/
-        <span className="off"> F° </span>
-      </Button>
-    );
+import styled from 'styled-components';
+
+const Switch = styled(Button)`
+  height: 45px;
+  background-color: inherit;
+  border-radius: 0px;
+  .c {
+    color: ${props => (props.unitType === 'metric' ? '#fff' : 'grey')};
   }
-  return (
-    <Button className="switcher" onClick={changeUnit}>
-      <span className="off">C°</span>
-      {' '}
-/
-      <span> F° </span>
-    </Button>
-  );
-};
+
+  .f {
+    color: ${props => (props.unitType !== 'metric' ? '#fff' : 'grey')};
+  }
+`;
+
+const UnitSwitch = ({ onSetUnitType }) => (
+  <Switch onClick={onSetUnitType}>
+    <span className="c">C°</span>
+
+    <span className="f"> F° </span>
+  </Switch>
+);
 
 UnitSwitch.propTypes = {
-  changeUnit: PropTypes.func,
+  onSetUnitType: PropTypes.func,
   unitType: PropTypes.string,
 };
 
 UnitSwitch.defaultProps = {
-  changeUnit: () => null,
+  onSetUnitType: () => null,
   unitType: 'metric',
 };
 

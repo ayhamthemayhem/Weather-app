@@ -1,49 +1,83 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Container, Row, Col, Button, Form, Input } from 'reactstrap';
+import styled from 'styled-components';
+
 import UnitSwitch from '../UnitSwitcher/UnitSwitcher';
 import searchIcon from '../../media/icons/search.svg';
 
-const Search = ({ changeUnit, unitType, onTextInput, onGetWeatherData }) => (
-  <Container className="mb-5 mt-5">
-    <Row className="searchContainer">
-      <Col className="unitSwitch" md="3" xs="3">
-        <UnitSwitch changeUnit={changeUnit} unitType={unitType} />
+const SearchIcon = styled.img`
+  width: 16px;
+  height: auto;
+`;
+
+const SearchInput = styled(Input)`
+  border-radius: 0px;
+  background-color: inherit;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  transition: border 1s ease;
+  color: #fff;
+  margin-right: 2%;
+  height: 45px;
+  &:hover {
+    background-color: inherit;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+  }
+  &:focus {
+    outline: none;
+    color: #fff;
+    background-color: inherit;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+  }
+  &:active {
+    outline: none;
+  }
+`;
+
+const SearchButton = styled(Button)`
+  height: 45px;
+  &:hover {
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    background-color: inherit;
+  }
+`;
+
+const SearchForm = styled(Form)`
+  display: flex;
+  justify-content: space-around;
+`;
+
+const Search = ({ onSetUnitType, unitType, onInputChange, onGetWeatherData }) => (
+  <Container>
+    <Row>
+      <Col md="1" xs="3">
+        <UnitSwitch onSetUnitType={onSetUnitType} unitType={unitType} />
       </Col>
-      <Col md="6" xs="6">
-        <Form className="form-inline  searchButton">
-          <Input
-            aria-label="Search"
-            className="mr-sm-2 "
-            id="searchBar"
-            onChange={onTextInput}
-            placeholder="City Name"
-            type="text"
-          />
-          <Button className="my-2 my-sm-0" type="submit" onClick={onGetWeatherData}>
-            <span>
-              <img alt="search icon" className="searchIcon" src={searchIcon} />
-            </span>
-          </Button>
-        </Form>
+      <Col md="11" xs="6">
+        <SearchForm>
+          <SearchInput aria-label="Search" onChange={onInputChange} placeholder="City Name" type="text" />
+          <SearchButton type="submit" onClick={onGetWeatherData}>
+            <SearchIcon alt="search icon" src={searchIcon} />
+          </SearchButton>
+        </SearchForm>
       </Col>
     </Row>
   </Container>
 );
 
 Search.propTypes = {
-  changeUnit: PropTypes.func,
   cityName: PropTypes.string,
   onGetWeatherData: PropTypes.func,
-  onTextInput: PropTypes.func,
+  onInputChange: PropTypes.func,
+  onSetUnitType: PropTypes.func,
   unitType: PropTypes.string,
 };
 
 Search.defaultProps = {
-  changeUnit: () => null,
   cityName: '',
   onGetWeatherData: () => null,
-  onTextInput: () => null,
+  onInputChange: () => null,
+  onSetUnitType: () => null,
   unitType: 'metric',
 };
 export default Search;

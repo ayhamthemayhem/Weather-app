@@ -11,7 +11,7 @@ import './App.css';
 @inject('store')
 @observer
 class App extends React.Component {
-  changeUnit = () => {
+  handleSetUnitType = () => {
     const { store } = this.props;
     store.setUnitType();
   };
@@ -22,7 +22,7 @@ class App extends React.Component {
     store.getWeatherData();
   };
 
-  handleTextInput = (event) => {
+  handleInputChange = (event) => {
     const { store } = this.props;
     const { value } = event.target;
     store.setCityName(value);
@@ -34,14 +34,13 @@ class App extends React.Component {
         cityData, weekDays, unitType, nextSixHours, mainInfo,
       },
     } = this.props;
-    console.log(mainInfo);
     return (
       <Router>
         <Container fluid className="App">
           <Search
-            changeUnit={this.changeUnit}
             onGetWeatherData={this.handleGetWeatherData}
-            onTextInput={this.handleTextInput}
+            onInputChange={this.handleInputChange}
+            onSetUnitType={this.handleSetUnitType}
             unitType={unitType}
           />
           <Main

@@ -1,9 +1,9 @@
 import React from 'react';
-import { Container, Row } from 'reactstrap';
+import { Container } from 'reactstrap';
 import PropTypes from 'prop-types';
-import Hour from '../Hours/Hour';
 import MainInfo from './MainInfo';
 import Days from '../Days/Days';
+import Hours from '../Hours/Hours';
 
 const Result = ({ weatherData, weekDays, nextSixHours, mainInfo }) => {
   const { list, city } = weatherData;
@@ -12,9 +12,7 @@ const Result = ({ weatherData, weekDays, nextSixHours, mainInfo }) => {
   return (
     <Container>
       <MainInfo cityName={city.name} mainInfo={mainInfo} />
-      <Row className="hours">
-        {nextSixHours.map(({ temp, icon, time }) => <Hour key={time} icon={icon} temp={temp} time={time} />)}
-      </Row>
+      <Hours nextSixHours={nextSixHours} />
       <Days weekDays={weekDays} />
     </Container>
   );

@@ -1,16 +1,19 @@
 import React from 'react';
-import { Col, Row } from 'reactstrap';
+import { Row } from 'reactstrap';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 import Day from './Day';
 
-const Days = ({ weekDays }) => (
-  <Row className=" days">
-    <Col md="1" />
-    {weekDays.map(day => <Day key={day.name} day={day} />)}
-    <Col md="1" />
-  </Row>
-);
+const DaysWrapper = styled(Row)`
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  margin: 2% 0px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+`;
+
+const Days = ({ weekDays }) => <DaysWrapper>{weekDays.map(day => <Day key={day.name} day={day} />)}</DaysWrapper>;
 
 Days.propTypes = {
   weekDays: PropTypes.array,
