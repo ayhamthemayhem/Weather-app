@@ -1,5 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Container, Col } from 'reactstrap';
+
 import icons from '../../media/iconsLookupTable';
 
 const Hour = ({ temp, icon, time }) => (
@@ -11,4 +13,16 @@ const Hour = ({ temp, icon, time }) => (
     </Container>
   </Col>
 );
+
+Hour.propTypes = {
+  icon: PropTypes.string,
+  temp: PropTypes.string,
+  time: PropTypes.string,
+};
+
+Hour.defaultProps = {
+  icon: '',
+  temp: '',
+  time: '',
+};
 export default Hour;

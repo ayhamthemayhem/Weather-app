@@ -1,9 +1,12 @@
+body,
+html {
+  background: linear-gradient(45deg, #002d40 6%, #002d40 15%, #e54661 143%);
+}
 .App {
   color: white;
   padding-top: 1%;
   min-height: 100vh;
   padding-bottom: 1%;
-  background: linear-gradient(45deg, #002d40 6%, #002d40 15%, #e54661 143%);
 }
 .ct {
   font-weight: lighter;

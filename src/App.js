@@ -2,8 +2,10 @@ import React from 'react';
 import { Container } from 'reactstrap';
 import { observer, inject, PropTypes as MobxPropTypes } from 'mobx-react';
 import { BrowserRouter as Router } from 'react-router-dom';
+
 import Main from './components/Main/Main';
 import Search from './components/Search/Search';
+
 import './App.css';
 
 @inject('store')
@@ -28,9 +30,11 @@ class App extends React.Component {
 
   render() {
     const {
-      store: { cityData, weekDays, unitType, nextSixHours },
+      store: {
+        cityData, weekDays, unitType, nextSixHours, mainInfo,
+      },
     } = this.props;
-    console.log(nextSixHours);
+    console.log(mainInfo);
     return (
       <Router>
         <Container fluid className="App">
@@ -40,7 +44,13 @@ class App extends React.Component {
             onTextInput={this.handleTextInput}
             unitType={unitType}
           />
-          <Main cityData={cityData} nextSixHours={nextSixHours} unitType={unitType} weekDays={weekDays} />
+          <Main
+            cityData={cityData}
+            mainInfo={mainInfo}
+            nextSixHours={nextSixHours}
+            unitType={unitType}
+            weekDays={weekDays}
+          />
         </Container>
       </Router>
     );

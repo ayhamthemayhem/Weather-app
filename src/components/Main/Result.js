@@ -5,13 +5,13 @@ import Hour from '../Hours/Hour';
 import MainInfo from './MainInfo';
 import Days from '../Days/Days';
 
-const Result = ({ weatherData, weekDays, nextSixHours }) => {
+const Result = ({ weatherData, weekDays, nextSixHours, mainInfo }) => {
   const { list, city } = weatherData;
   if (list === undefined) return <div />;
 
   return (
     <Container>
-      <MainInfo cityName={city.name} weatherData={list[0]} />
+      <MainInfo cityName={city.name} mainInfo={mainInfo} />
       <Row className="hours">
         {nextSixHours.map(({ temp, icon, time }) => <Hour key={time} icon={icon} temp={temp} time={time} />)}
       </Row>
@@ -21,12 +21,14 @@ const Result = ({ weatherData, weekDays, nextSixHours }) => {
 };
 
 Result.propTypes = {
+  mainInfo: PropTypes.object,
   nextSixHours: PropTypes.array,
   weatherData: PropTypes.object,
   weekDays: PropTypes.array,
 };
 
 Result.defaultProps = {
+  mainInfo: {},
   nextSixHours: [],
   weatherData: {},
   weekDays: [],

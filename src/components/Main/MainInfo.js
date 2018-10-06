@@ -1,31 +1,19 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Row, Col, ListGroup, ListGroupItem } from 'reactstrap';
 import icons from '../../media/iconsLookupTable';
 
-const MainInfo = ({ weatherData, units, cityName }) => {
-  const { weather, main, wind } = weatherData;
-  const info = {
-    description: weather[0].description,
-    dayIcon: icons[weather[0].icon],
-    humidity: `${main.humidity}`,
-    pressure: `${main.pressure}`,
-    windSpeed: `${wind.speed}`,
-    windDirection: `${wind.deg}`,
-  };
-  let temp;
-  if (units === 'metric') {
-    temp = `${Math.round(main.temp)}°`;
-  } else if (units === 'imperial') {
-    temp = `${Math.round(main.temp * (9 / 5) + 32)}°`;
-  }
-
+const MainInfo = ({ mainInfo }) => {
+  const {
+    description, temp, cityName, humidity, pressure, windSpeed, winDeg, icon,
+  } = mainInfo;
   return (
     <div className="MainInfo">
       <Row>
         <Col md="6" xs="12">
-          <img alt={info.description} className="img-fluid" id="bigIcon" src={info.dayIcon} />
+          <img alt={description} className="img-fluid" id="bigIcon" src={icons[icon]} />
           <h1>{cityName}</h1>
-          <h4>{info.description}</h4>
+          <h4>{description}</h4>
         </Col>
         <Col md="6" xs="12">
           <ListGroup>
@@ -36,19 +24,17 @@ const MainInfo = ({ weatherData, units, cityName }) => {
             </ListGroupItem>
             <ListGroupItem>
               Humidity :
-              {' '}
               <span>
-                {' '}
-                {info.humidity}
+                {humidity}
                 %
               </span>
             </ListGroupItem>
             <ListGroupItem>
-              Pressur :
+              pressure :
               {' '}
               <span>
                 {' '}
-                {info.pressure}
+                {pressure}
                 {' '}
 hPa
               </span>
@@ -58,7 +44,7 @@ hPa
               {' '}
               <span>
                 {' '}
-                {info.windSpeed}
+                {windSpeed}
                 {' '}
 m/s
               </span>
@@ -68,7 +54,7 @@ m/s
               {' '}
               <span>
                 {' '}
-                {info.windDirection}
+                {winDeg}
               </span>
             </ListGroupItem>
           </ListGroup>
@@ -76,5 +62,13 @@ m/s
       </Row>
     </div>
   );
+};
+
+MainInfo.propTypes = {
+  mainInfo: PropTypes.object,
+};
+
+MainInfo.defaultProps = {
+  mainInfo: {},
 };
 export default MainInfo;

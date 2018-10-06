@@ -18,6 +18,22 @@ class Store {
   }
 
   @computed
+  get mainInfo() {
+    if (!this.cityData) return {};
+    const currentInfo = this.cityData.data.list[0];
+    return {
+      cityName: this.cityData.name,
+      humidity: currentInfo.main.humidity,
+      pressure: currentInfo.main.pressure,
+      temp: Math.round(this.cityData.temp),
+      icon: currentInfo.weather[0].icon,
+      windSpeed: currentInfo.wind.speed,
+      winDeg: currentInfo.wind.deg,
+      description: currentInfo.weather[0].description,
+    };
+  }
+
+  @computed
   get unitType() {
     return this._unitType;
   }

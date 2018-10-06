@@ -1,5 +1,6 @@
 import React from 'react';
 import { Col, Row } from 'reactstrap';
+import PropTypes from 'prop-types';
 
 import Day from './Day';
 
@@ -10,4 +11,12 @@ const Days = ({ weekDays }) => (
     <Col md="1" />
   </Row>
 );
+
+Days.propTypes = {
+  weekDays: PropTypes.array,
+};
+
+Days.defaultProps = {
+  weekDays: [],
+};
 export default Days;
