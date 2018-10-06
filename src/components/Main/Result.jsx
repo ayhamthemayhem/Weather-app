@@ -1,23 +1,35 @@
 import React from 'react';
 import { Container, Row } from 'reactstrap';
-
+import PropTypes from 'prop-types';
 import Hour from '../Hours/Hour';
 import MainInfo from './MainInfo';
 import Days from '../Days/Days';
 
-const Result = ({ units, weatherData, weekDays }) => {
+const Result = ({ weatherData, weekDays, nextSixHours }) => {
   const { list, city } = weatherData;
   if (list === undefined) return <div />;
 
-  const hoursInfo = list.slice(0, 6);
-  const hours = hoursInfo.map((hour, index) => <Hour key={index} units={units} weatherData={list[index]} />);
   return (
     <Container>
-      <MainInfo key={1} cityName={city.name} units={units} weatherData={list[0]} />
-      <Row className="hours">{hours}</Row>
-      <Days units={units} weekDays={weekDays} />
+      <MainInfo cityName={city.name} weatherData={list[0]} />
+      <Row className="hours">
+        {nextSixHours.map(({ temp, icon, time }) => <Hour key={time} icon={icon} temp={temp} time={time} />)}
+      </Row>
+      <Days weekDays={weekDays} />
     </Container>
   );
+};
+
+Result.propTypes = {
+  nextSixHours: PropTypes.array,
+  weatherData: PropTypes.object,
+  weekDays: PropTypes.array,
+};
+
+Result.defaultProps = {
+  nextSixHours: [],
+  weatherData: {},
+  weekDays: [],
 };
 
 export default Result;

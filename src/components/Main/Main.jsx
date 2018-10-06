@@ -4,20 +4,22 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import Result from './Result';
 
-const Main = ({ units, cityData, weekDays }) => (
+const Main = ({ cityData, weekDays, nextSixHours }) => (
   <ReactCSSTransitionGroup transitionEnterTimeout={500} transitionLeaveTimeout={300} transitionName="example">
-    {cityData ? <Result units={units} weatherData={cityData.data} weekDays={weekDays} /> : null}
+    {cityData ? <Result nextSixHours={nextSixHours} weatherData={cityData.data} weekDays={weekDays} /> : null}
   </ReactCSSTransitionGroup>
 );
 
 Main.propTypes = {
   cityData: PropTypes.object,
-  units: PropTypes.array,
+  nextSixHours: PropTypes.array,
+  weekDays: PropTypes.array,
 };
 
 Main.defaultProps = {
   cityData: {},
-  units: [],
+  nextSixHours: [],
+  weekDays: [],
 };
 
 export default Main;

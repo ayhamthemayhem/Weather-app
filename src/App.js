@@ -9,20 +9,9 @@ import './App.css';
 @inject('store')
 @observer
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      unitType: 'metric',
-    };
-  }
-
   changeUnit = () => {
-    const { unitType } = this.state;
-    if (unitType === 'metric') {
-      this.setState({ unitType: 'imperial' });
-    } else if (unitType === 'imperial') {
-      this.setState({ unitType: 'metric' });
-    }
+    const { store } = this.props;
+    store.setUnitType();
   };
 
   handleGetWeatherData = (e) => {
@@ -38,11 +27,10 @@ class App extends React.Component {
   };
 
   render() {
-    const { unitType } = this.state;
     const {
-      store: { cityData, weekDays },
+      store: { cityData, weekDays, unitType, nextSixHours },
     } = this.props;
-    console.log(weekDays);
+    console.log(nextSixHours);
     return (
       <Router>
         <Container fluid className="App">
@@ -52,7 +40,7 @@ class App extends React.Component {
             onTextInput={this.handleTextInput}
             unitType={unitType}
           />
-          <Main cityData={cityData} unitType={unitType} weekDays={weekDays} />
+          <Main cityData={cityData} nextSixHours={nextSixHours} unitType={unitType} weekDays={weekDays} />
         </Container>
       </Router>
     );

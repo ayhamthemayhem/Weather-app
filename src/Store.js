@@ -10,11 +10,26 @@ class Store {
 
   @observable _citiesArray = [];
 
-  @observable unitType = 'metric';
+  @observable _unitType = 'metric';
 
   @computed
   get cityData() {
     return this._cityData;
+  }
+
+  @computed
+  get unitType() {
+    return this._unitType;
+  }
+
+  @computed
+  get nextSixHours() {
+    if (!this.cityData) return [];
+    return this.cityData.data.list.slice(0, 6).map(hour => ({
+      time: moment(hour.dt_txt).format('LT'),
+      icon: hour.weather[0].icon,
+      temp: Math.round(hour.main.temp),
+    }));
   }
 
   @computed
@@ -26,7 +41,8 @@ class Store {
       icon: day.weather[0].icon,
     }));
 
-    return uniqBy(allDays, 'name');
+    const fliterdDays = uniqBy(allDays, 'name');
+    return fliterdDays.length === 5 ? fliterdDays : fliterdDays.slice(0, -1);
   }
 
   @action
@@ -57,10 +73,10 @@ class Store {
 
   @action
   setUnitType() {
-    if (this.unitType === 'metric') {
-      this.unitType = 'imperial';
-    } else if (this.unitType === 'imperial') {
-      this.unitType = 'metric';
+    if (this._unitType === 'metric') {
+      this._unitType = 'imperial';
+    } else if (this._unitType === 'imperial') {
+      this._unitType = 'metric';
     }
   }
 }
