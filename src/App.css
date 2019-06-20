@@ -1,6 +1,15 @@
+:root {
+  --main-bg-color: #e54661;
+  --second-bg-color: #0d0d0d;
+}
 body,
 html {
-  background: linear-gradient(45deg, #002d40 6%, #002d40 15%, #e54661 143%);
+  background: linear-gradient(
+    45deg,
+    var(--second-bg-color) 8%,
+    var(--second-bg-color) 30%,
+    var(--main-bg-color) 190%
+  );
 }
 .App {
   color: white;

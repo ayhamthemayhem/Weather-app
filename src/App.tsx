@@ -1,28 +1,33 @@
-import React from 'react';
-import { Container } from 'reactstrap';
-import { observer, inject, PropTypes as MobxPropTypes } from 'mobx-react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import React from "react";
+import { Container } from "reactstrap";
+import { observer, inject } from "mobx-react";
+import { BrowserRouter as Router } from "react-router-dom";
 
-import Main from './components/Main/Main';
-import Search from './components/Search/Search';
+import Main from "./components/Main/Main";
+import Search from "./components/Search/Search";
 
-import './App.css';
+import "./App.css";
+import Store from "./Store";
 
-@inject('store')
+type Props = {
+  store?: Store;
+};
+
+@inject("store")
 @observer
-class App extends React.Component {
+class App extends React.Component<Props> {
   handleSetUnitType = () => {
     const { store } = this.props;
     store.setUnitType();
   };
 
-  handleGetWeatherData = (e) => {
+  handleGetWeatherData = e => {
     e.preventDefault();
     const { store } = this.props;
     store.getWeatherData();
   };
 
-  handleInputChange = (event) => {
+  handleInputChange = event => {
     const { store } = this.props;
     const { value } = event.target;
     store.setCityName(value);
@@ -30,9 +35,7 @@ class App extends React.Component {
 
   render() {
     const {
-      store: {
-        cityData, weekDays, unitType, nextSixHours, mainInfo,
-      },
+      store: { cityData, weekDays, unitType, nextSixHours, mainInfo }
     } = this.props;
     return (
       <Router>
@@ -43,6 +46,7 @@ class App extends React.Component {
             onSetUnitType={this.handleSetUnitType}
             unitType={unitType}
           />
+          //@ts-ignore
           <Main
             cityData={cityData}
             mainInfo={mainInfo}
@@ -55,9 +59,5 @@ class App extends React.Component {
     );
   }
 }
-
-App.wrappedComponent.propTypes = {
-  store: MobxPropTypes.observableObject.isRequired,
-};
 
 export default App;

@@ -1,9 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Row, Col, ListGroup, ListGroupItem } from 'reactstrap';
-import styled from 'styled-components';
+import React from "react";
+import PropTypes from "prop-types";
+import { Row, Col, ListGroup, ListGroupItem } from "reactstrap";
+import styled from "styled-components";
 
-import icons from '../../media/iconsLookupTable';
+import icons from "../../media/iconsLookupTable";
 
 const MainInfoWrapper = styled(Row)`
   padding: 2%;
@@ -43,7 +43,14 @@ const MainImage = styled.img`
 
 const MainInfo = ({ mainInfo }) => {
   const {
-    description, temp, cityName, humidity, pressure, windSpeed, winDeg, icon,
+    description,
+    temp,
+    cityName,
+    humidity,
+    pressure,
+    windSpeed,
+    winDeg,
+    icon
   } = mainInfo;
 
   return (
@@ -58,22 +65,10 @@ const MainInfo = ({ mainInfo }) => {
           <ListItem>
             <Temp>{temp}</Temp>
           </ListItem>
-          <ListItem>
-            Humidity :
-            {humidity}
-          </ListItem>
-          <ListItem>
-            Pressure :
-            {pressure}
-          </ListItem>
-          <ListItem>
-            Wind speed :
-            {windSpeed}
-          </ListItem>
-          <ListItem>
-            Wind direction :
-            {winDeg}
-          </ListItem>
+          <ListItem>Humidity :{humidity}</ListItem>
+          <ListItem>Pressure :{pressure}</ListItem>
+          <ListItem>Wind speed :{windSpeed}</ListItem>
+          <ListItem>Wind direction :{winDeg}</ListItem>
         </ListGroup>
       </Col>
     </MainInfoWrapper>
@@ -81,10 +76,10 @@ const MainInfo = ({ mainInfo }) => {
 };
 
 MainInfo.propTypes = {
-  mainInfo: PropTypes.object,
+  mainInfo: PropTypes.object
 };
 
 MainInfo.defaultProps = {
-  mainInfo: {},
+  mainInfo: {}
 };
 export default MainInfo;

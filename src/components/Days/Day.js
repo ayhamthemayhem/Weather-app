@@ -1,9 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Col } from 'reactstrap';
-import styled from 'styled-components';
+import React from "react";
+import PropTypes from "prop-types";
+import { Col } from "reactstrap";
+import styled from "styled-components";
 
-import icons from '../../media/iconsLookupTable';
+import icons from "../../media/iconsLookupTable";
 
 const DayWrapper = styled.div`
   display: flex;
@@ -32,9 +32,9 @@ const Day = ({ day: { name, icon, temp } }) => (
 );
 
 Day.propTypes = {
-  day: PropTypes.object,
+  day: PropTypes.object
 };
 Day.defaultProps = {
-  day: {},
+  day: {}
 };
 export default Day;

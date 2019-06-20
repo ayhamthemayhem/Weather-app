@@ -1,9 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Col } from 'reactstrap';
-import styled from 'styled-components';
+import React from "react";
+import PropTypes from "prop-types";
+import { Col } from "reactstrap";
+import styled from "styled-components";
 
-import icons from '../../media/iconsLookupTable';
+import icons from "../../media/iconsLookupTable";
 
 const InfoWrapper = styled.div`
   display: flex;
@@ -30,12 +30,12 @@ const Hour = ({ temp, icon, time }) => (
 Hour.propTypes = {
   icon: PropTypes.string,
   temp: PropTypes.string,
-  time: PropTypes.string,
+  time: PropTypes.string
 };
 
 Hour.defaultProps = {
-  icon: '',
-  temp: '',
-  time: '',
+  icon: "",
+  temp: "",
+  time: ""
 };
 export default Hour;
