@@ -1,0 +1,34 @@
+body {
+  background: $body-gr;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+
+.bordered-box {
+  padding: 1rem;
+  border: 1px solid $body-color;
+  border-radius: $border-radius;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.main-icon {
+  width: 64px;
+  height: 64px;
+}
+.secondary-icon {
+  width: 56px;
+  height: 56px;
+}
+
+// @include media-breakpoint-up(sm) {
+//
+// }
+
+@media (max-width: 767.98px) {
+  .weather-secondary-info {
+    text-align: center;
+  }
+}

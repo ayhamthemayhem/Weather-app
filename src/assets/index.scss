@@ -1,0 +1,11 @@
+//Bootstrap
+$primary: #e54661;
+$dark: #212530;
+$body-color: #fff;
+$body-bg: $dark;
+
+//Custom
+$body-gr: linear-gradient(45deg, $dark 30%, $primary 190%);
+
+@import "~bootstrap/scss/bootstrap.scss";
+@import "./_global.scss";
